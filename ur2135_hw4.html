@@ -13,14 +13,12 @@
         <div class="column"></div>
         <div class="mid-column">
             <div id="vals">
-                <div id="words">
-                    <span class="l_align">Timer:</span>
-                    <span class="r_align">Score:</span>
-                </div>
-                <br>
-                <div id="numbers">
-                    <span id="timer" class="l_align">60</span>
-                    <span id="score" class="r_align">0</span>
+                <div class="metrics">
+                    <span class="metrics">Timer : </span>
+                    <span id="timer" class="metrics"> 60</span>
+                    <br>
+                    <span class="metrics">Score : </span>
+                    <span id="score" class="metrics"> 0</span>     
                 </div>
             </div>
             <br>
@@ -47,9 +45,9 @@
             <div id="game_over">
                 Game Over, to play again hit "Reset Game"!
             </div>
-            <div id="reset">
-                <button class="button" onclick="reset_game()">Reset Game</button>
-            </div>     
+            <!-- <div id="reset"> -->
+            <button class="button" onclick="reset_game()">Reset Game</button>
+            <!-- </div>      -->
         </div>
         <div class="column"></div>
     </div>

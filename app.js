@@ -112,7 +112,6 @@ function reset_game() {
 
     }
 
-
     $("#game_over").css("visibility", "hidden");
 
 }

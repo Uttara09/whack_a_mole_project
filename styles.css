@@ -7,10 +7,6 @@
     margin:0 auto;
 }
 
-#reset {
-    margin-top: 30px;
-}
-
 #game_over {
     visibility: hidden;
     color: white;
@@ -35,6 +31,12 @@
     float: right;
 }
 
+.metrics {
+    color: yellow;
+    font-size: 20px;
+    float: left;
+    padding: 2px;
+}
 
 .mid-column{
     width:420px;
@@ -44,7 +46,6 @@
 .column{
     width:200px;
 }
-
 
 #vals {
     margin-bottom: 20px;
@@ -60,14 +61,5 @@
     width:140px;
 }
 
-#words {
-    font-size: 85%;
-    color: yellow;
-}
-
-#numbers {
-    font-size: 250%;
-    color: white;
-}
 
 
