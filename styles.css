@@ -1,0 +1,70 @@
+.outer{
+    height:700px;
+    width:820px;
+    background-color: #01893f;
+    display: flex;
+    flex-wrap: wrap;
+    margin:0 auto;
+}
+
+.mid-column{
+    width:420px;
+    margin: auto;
+}
+
+.column{
+    width:200px;
+}
+
+
+#vals {
+    margin-bottom: 20px;
+}
+
+#grid {
+    margin-top: 25px;
+    background-color: #01893f;
+}
+
+.square{
+    height:140px;
+    width:140px;
+}
+
+#words {
+    font-size: 85%;
+    color: yellow;
+}
+
+#numbers {
+    font-size: 250%;
+    color: white;
+}
+
+#reset {
+    margin-top: 30px;
+}
+
+#game_over {
+    visibility: hidden;
+    color: white;
+}
+
+.button {
+    background-color: #01893f;
+    border: 1px solid yellow;
+    color: yellow;
+    padding: 20px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    width: 400px;
+}
+
+.l_align {
+    float: left;
+}
+
+.r_align {
+    float: right;
+}
