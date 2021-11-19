@@ -11,13 +11,13 @@ $(document).ready(function() {
         show_mole();
         remove_mole();
 
-        live_moles.forEach((mole) => {
+        for (mole in live_moles) {
             live_moles[mole] += 1;
-            if(live_moles[mole] > 1) {
+            if (live_moles[mole] > 3) {
                 $("#"+mole).attr("src", "hole.png");
                 delete live_moles[mole];
             }
-        })
+        }
 
     }, 1000);
     
@@ -31,10 +31,16 @@ function count_down() {
     }
 
     else {
-        live_moles.forEach((mole) => {
+
+        for (mole in live_moles) {
+            console.log("live_mole!!!")
             $("#"+mole).attr("src", "hole.png");
-            delete live_moles[mole];})
-            //displays message
+            delete live_moles[mole];
+
+        }
+
+        //displays message
+        console.log("time is zero")
         $("#game_over").css("visibility", "visible");
     }
 
@@ -99,12 +105,13 @@ function reset_game() {
     $("#timer").html(time);
     $("#score").html(score);
     
-    //All moles dissapear 
-
-    live_moles.forEach((mole) => {
+    //All moles dissapear
+    for (mole in live_moles) {
         $("#"+mole).attr("src", "hole.png");
         delete live_moles[mole];
-    })
+
+    }
+
 
     $("#game_over").css("visibility", "hidden");
 
