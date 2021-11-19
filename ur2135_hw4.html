@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Whack a Mole</title>
+
+    <!-- To connect the css stle sheet -->
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="outer">
+        <div class="column"></div>
+        <div class="mid-column">
+            <div id="vals">
+                <div id="words">
+                    <span class="l_align">Timer:</span>
+                    <span class="r_align">Score:</span>
+                </div>
+                <br>
+                <div id="numbers">
+                    <span id="timer" class="l_align">60</span>
+                    <span id="score" class="r_align">0</span>
+                </div>
+            </div>
+            <br>
+            <div id="grid">
+                <div>
+                    <img id="0" class="square l_align" src="hole.png">
+                    <img id="1" class="square" src="hole.png">
+                    <img id="2" class="square r_align" src="hole.png">
+                </div>
+                <br>
+                <div>
+                    <img id="3" class="square l_align" src="hole.png">
+                    <img id="4" class="square" src="hole.png">
+                    <img id="5" class="square r_align" src="hole.png">
+                </div>
+                <br>
+                <div>
+                    <img id="6" class="square l_align" src="hole.png">
+                    <img id="7" class="square" src="hole.png">
+                    <img id="8" class="square r_align" src="hole.png">
+                </div>
+                <br>
+            </div>
+            <div id="game_over">
+                Game Over, to play again hit "Reset Game"!
+            </div>
+            <div id="reset">
+                <button class="button" onclick="reset_game()">Reset Game</button>
+            </div>     
+        </div>
+        <div class="column"></div>
+    </div>
+
+    <!-- To connect the JS file -->
+    <script src="app.js"></script>
+</body>
+</html>

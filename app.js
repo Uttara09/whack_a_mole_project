@@ -1,6 +1,8 @@
 var time = 60;
 var score = 0
 var live_moles = {}
+const timer = document.querySelector("#timer")
+
 
 $(document).ready(function() {
 
@@ -20,23 +22,37 @@ $(document).ready(function() {
     
 });
 
-function count_down() {
+// function count_down() {
     
-    $("#timer").html(time);
+//     $("#timer").html(time);
     
-    if (time > 0) {
-        time--;
-    } else {
+//     if (time > 0) {
+//         time--;
+//     } else {
         
-        //All moles dissapear 
-        for (mole in live_moles) {
+//         //All moles dissapear 
+//         for (mole in live_moles) {
+//             $("#"+mole).attr("src", "hole.png");
+//             delete live_moles[mole];
+//         }
+
+//         //displays message
+//         $("#game_over").css("visibility", "visible");
+
+//     }
+// }
+
+function count_down() {
+    timer.innerHTML = time;
+
+    if (time > 0){
+        time--;
+    }
+
+    else {
+        live_moles.forEach((mole) => {
             $("#"+mole).attr("src", "hole.png");
-            delete live_moles[mole];
-        }
-
-        //displays message
-        $("#game_over").css("visibility", "visible");
-
+            delete live_moles[mole];})
     }
 }
 
@@ -52,9 +68,7 @@ function show_mole() {
             $("#"+moleHole).attr("src", "mole.png");
             live_moles[moleHole] = 0;
         }
-
     }
-
 }
 
 // on clicking the square
