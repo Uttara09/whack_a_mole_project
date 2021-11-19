@@ -2,7 +2,6 @@ var time = 60;
 var score = 0
 var live_moles = {}
 
-
 $(document).ready(function() {
 
     window.setInterval(function(){  
@@ -43,11 +42,11 @@ function count_down() {
 
 function show_mole() {
     
-    if (time > 0) {  //so that no moles appear when game is not running
-        var timeRand = Math.floor(Math.random() * 5000)+1000; //Generate Random number between 1000-6000 (0-5 secs)
-        setTimeout(show_mole, timeRand); 
+    if (time > 0) {  
+        var rand_wait_time = Math.floor(Math.random() * 3000)+500; 
+        setTimeout(show_mole, rand_wait_time); 
 
-        var moleHole = Math.floor(Math.random() * 9 ); //Generate Random hole number between 0-8 
+        var moleHole = Math.floor(Math.random() * 9 ); // random hole between 0 and 8
 
         if (!(moleHole in live_moles)) {
             $("#"+moleHole).attr("src", "mole.png");
@@ -58,12 +57,18 @@ function show_mole() {
 
 }
 
-function wack_mole( holeNum ) {
+// on clicking the square
+$(".square").click(function() {
+    var hole_id = $(this).attr("id");
+    wack_mole(hole_id); 
+});
 
-    if ($("#"+holeNum).attr("src") != "hole.png") {
+function wack_mole( hole_id ) {
 
-        $("#"+holeNum).attr("src", "hole.png");
-        delete live_moles[holeNum];
+    if ($("#"+hole_id).attr("src") != "hole.png") {
+
+        $("#"+hole_id).attr("src", "hole.png");
+        delete live_moles[hole_id];
         
         score++;
         $("#score").html(score);
@@ -73,28 +78,20 @@ function wack_mole( holeNum ) {
 }
 
 function reset_game() {
-    currentTime = 60;
+    time = 60;
     score = 0;
+    $("#timer").html(time);
+    $("#score").html(score);
+    
+    //All moles dissapear 
+    for (mole in live_moles) {
+        $("#"+mole).attr("src", "hole.png");
+        delete live_moles[mole];
+    }
+
+    $("#game_over").css("visibility", "hidden");
 
 }
 
-    $(".button").click(function() {
-        time = 60;
-        score = 0;
-        $("#timer").html(time);
-        $("#score").html(score);
-        
-        //All moles dissapear 
-        for (mole in live_moles) {
-            $("#"+mole).attr("src", "hole.png");
-            delete live_moles[mole];
-        }
 
-        $("#game_over").css("visibility", "hidden");
-    });
-
-    $(".square").click(function() {
-        var holeId = $(this).attr("id");
-        wack_mole(holeId); 
-    });
 
