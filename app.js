@@ -1,6 +1,6 @@
 var time = 60;
 var score = 0
-var liveMoles = {}
+var live_moles = {}
 
 
 $(document).ready(function() {
@@ -9,11 +9,11 @@ $(document).ready(function() {
         count_down();
         show_mole();
         
-        for (mole in liveMoles) {
-            liveMoles[mole] += 1;
-            if (liveMoles[mole] > 3) {
+        for (mole in live_moles) {
+            live_moles[mole] += 1;
+            if (live_moles[mole] > 3) {
                 $("#"+mole).attr("src", "hole.png");
-                delete liveMoles[mole];
+                delete live_moles[mole];
             }
         }
 
@@ -30,9 +30,9 @@ function count_down() {
     } else {
         
         //All moles dissapear 
-        for (mole in liveMoles) {
+        for (mole in live_moles) {
             $("#"+mole).attr("src", "hole.png");
-            delete liveMoles[mole];
+            delete live_moles[mole];
         }
 
         //displays message
@@ -49,9 +49,9 @@ function show_mole() {
 
         var moleHole = Math.floor(Math.random() * 9 ); //Generate Random hole number between 0-8 
 
-        if (!(moleHole in liveMoles)) {
+        if (!(moleHole in live_moles)) {
             $("#"+moleHole).attr("src", "mole.png");
-            liveMoles[moleHole] = 0;
+            live_moles[moleHole] = 0;
         }
 
     }
@@ -63,7 +63,7 @@ function wack_mole( holeNum ) {
     if ($("#"+holeNum).attr("src") != "hole.png") {
 
         $("#"+holeNum).attr("src", "hole.png");
-        delete liveMoles[holeNum];
+        delete live_moles[holeNum];
         
         score++;
         $("#score").html(score);
@@ -85,9 +85,9 @@ function reset_game() {
         $("#score").html(score);
         
         //All moles dissapear 
-        for (mole in liveMoles) {
+        for (mole in live_moles) {
             $("#"+mole).attr("src", "hole.png");
-            delete liveMoles[mole];
+            delete live_moles[mole];
         }
 
         $("#game_over").css("visibility", "hidden");
