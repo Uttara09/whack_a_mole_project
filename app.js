@@ -9,38 +9,19 @@ $(document).ready(function() {
     window.setInterval(function(){  
         count_down();
         show_mole();
-        
-        for (mole in live_moles) {
+        remove_mole();
+
+        live_moles.forEach((mole) => {
             live_moles[mole] += 1;
-            if (live_moles[mole] > 3) {
+            if(live_moles[mole] > 1) {
                 $("#"+mole).attr("src", "hole.png");
                 delete live_moles[mole];
             }
-        }
+        })
 
     }, 1000);
     
 });
-
-// function count_down() {
-    
-//     $("#timer").html(time);
-    
-//     if (time > 0) {
-//         time--;
-//     } else {
-        
-//         //All moles dissapear 
-//         for (mole in live_moles) {
-//             $("#"+mole).attr("src", "hole.png");
-//             delete live_moles[mole];
-//         }
-
-//         //displays message
-//         $("#game_over").css("visibility", "visible");
-
-//     }
-// }
 
 function count_down() {
     timer.innerHTML = time;
@@ -53,7 +34,11 @@ function count_down() {
         live_moles.forEach((mole) => {
             $("#"+mole).attr("src", "hole.png");
             delete live_moles[mole];})
+            //displays message
+        $("#game_over").css("visibility", "visible");
     }
+
+
 }
 
 function show_mole() {
@@ -73,6 +58,24 @@ function show_mole() {
     }
 }
 
+function remove_mole() {
+
+    if (time > 0) {  
+        var rand_wait_time = Math.floor(Math.random() * 3000)+500;
+
+        // call this function at random intervals of time  
+        setTimeout(remove_mole, rand_wait_time); 
+
+        var hole_id = Math.floor(Math.random() * 9 ); // random hole between 0 and 8
+
+        if (hole_id in live_moles) {
+            $("#"+hole_id).attr("src", "hole.png");
+            delete live_moles[hole_id];
+        }
+    }
+
+}
+
 // on clicking the square
 $(".square").click(function() {
     var hole_id = $(this).attr("id");
@@ -80,7 +83,6 @@ $(".square").click(function() {
 });
 
 function wack_mole( hole_id ) {
-
     if ($("#"+hole_id).attr("src") != "hole.png") {
 
         $("#"+hole_id).attr("src", "hole.png");
@@ -89,7 +91,6 @@ function wack_mole( hole_id ) {
         score++;
         $("#score").html(score);
     }
-
 }
 
 function reset_game() {
